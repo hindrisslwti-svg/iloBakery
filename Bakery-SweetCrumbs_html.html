@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet Crumbs Bakery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#fffaf7;
+      color:#4b352a;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      width:100%;
+      height:100px;
+      background:white;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 70px;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 2px 15px rgba(0,0,0,0.05);
+    }
+
+    .logo{
+      background:#d9a5a5;
+      color:white;
+      padding:18px 28px;
+      border-radius:0 0 30px 30px;
+    }
+
+    .logo h1{
+      font-size:35px;
+      letter-spacing:2px;
+    }
+
+    .logo p{
+      font-size:14px;
+      text-align:center;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:45px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#5c5c5c;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#d98f8f;
+    }
+
+    .nav-buttons{
+      display:flex;
+      gap:15px;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border:none;
+      border-radius:30px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .cart{
+      background:#eef1f3;
+      color:#555;
+    }
+
+    .login{
+      background:#d9a5a5;
+      color:white;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    /* HERO */
+    .hero{
+      width:100%;
+      padding:50px 70px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:25px;
+    }
+
+    .hero-card{
+      height:250px;
+      border-radius:25px;
+      overflow:hidden;
+      position:relative;
+      color:white;
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      justify-content:end;
+      transition:0.4s;
+    }
+
+    .hero-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .card1{
+      background:
+      linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),
+      url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=1200&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .card2{
+      background:
+      linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),
+      url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .card3{
+      background:
+      linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),
+      url('https://images.unsplash.com/photo-1519869325930-281384150729?q=80&w=1200&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-card h2{
+      font-size:40px;
+      line-height:1.1;
+    }
+
+    .hero-card p{
+      margin-top:10px;
+      font-size:15px;
+    }
+
+    /* ABOUT */
+    .about{
+      text-align:center;
+      padding:80px 20px;
+    }
+
+    .about h1{
+      font-size:70px;
+      line-height:1.1;
+      margin-bottom:25px;
+      color:#2f211b;
+    }
+
+    .about p{
+      font-size:22px;
+      color:#6d6d6d;
+    }
+
+    /* MENU */
+    .menu{
+      padding:40px 70px 100px;
+    }
+
+    .section-title{
+      font-size:45px;
+      margin-bottom:40px;
+    }
+
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .menu-card{
+      background:white;
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:0 8px 25px rgba(0,0,0,0.05);
+      transition:0.4s;
+    }
+
+    .menu-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .menu-card img{
+      width:100%;
+      height:230px;
+      object-fit:cover;
+    }
+
+    .menu-content{
+      padding:20px;
+    }
+
+    .menu-content h3{
+      font-size:24px;
+      margin-bottom:8px;
+    }
+
+    .menu-content p{
+      color:#777;
+      font-size:14px;
+      margin-bottom:15px;
+    }
+
+    .price{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .price span{
+      font-size:22px;
+      font-weight:700;
+      color:#d28c8c;
+    }
+
+    .buy-btn{
+      background:#d9a5a5;
+      color:white;
+      border:none;
+      padding:10px 18px;
+      border-radius:20px;
+      cursor:pointer;
+    }
+
+    @media(max-width:1000px){
+
+      .navbar{
+        padding:20px;
+        height:auto;
+        flex-direction:column;
+        gap:20px;
+      }
+
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+
+      .about h1{
+        font-size:45px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+
+    <div class="logo">
+      <h1>CRUMBLY</h1>
+      <p>Cakes, Bread & More...</p>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#">MENU</a></li>
+      <li><a href="#">STORES</a></li>
+      <li><a href="#">TREATS</a></li>
+      <li><a href="#">ABOUT</a></li>
+    </ul>
+
+    <div class="nav-buttons">
+      <button class="btn cart">CART 🛒</button>
+      <button class="btn login">LOGIN</button>
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-grid">
+
+      <div class="hero-card card1">
+        <h2>Fresh<br>Cakes</h2>
+        <p>Made daily with premium ingredients.</p>
+      </div>
+
+      <div class="hero-card card2">
+        <h2>Warm<br>Bread</h2>
+        <p>Soft, fluffy, and freshly baked every morning.</p>
+      </div>
+
+      <div class="hero-card card3">
+        <h2>Sweet<br>Pastries</h2>
+        <p>Perfect treats for your coffee time.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <h1>Created with love and passion<br>for bakery lovers</h1>
+
+    <p>
+      Crumbly is a modern bakery shop serving fresh bread,
+      cakes, pastries, and sweet desserts everyday.
+    </p>
+  </section>
+
+ <!-- MENU -->
+<section class="menu">
+
+    <h1 class="section-title">Menu Favorit 🍰</h1>
+
+    <div class="menu-grid">
+
+        <div class="menu-card">
+
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="menu-content">
+
+                <h3>Chocolate Cake</h3>
+
+                <p>
+                    Kue coklat premium dengan cream lembut dan rasa manis yang pas.
+                </p>
+
+                <div class="price">
+                    <span>Rp 120.000</span>
+
+                    <button class="buy-btn">
+                        Beli
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="menu-content">
+
+                <h3>Butter Croissant</h3>
+
+                <p>
+                    Croissant crispy di luar dan lembut di dalam, fresh from oven.
+                </p>
+
+                <div class="price">
+                    <span>Rp 45.000</span>
+
+                    <button class="buy-btn">
+                        Beli
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="menu-content">
+
+                <h3>Fresh Bread</h3>
+
+                <p>
+                    Roti fresh yang dipanggang setiap hari dengan bahan berkualitas.
+                </p>
+
+                <div class="price">
+                    <span>Rp 70.000</span>
+
+                    <button class="buy-btn">
+                        Beli
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+  </section>
+  <!-- CONTACT SECTION -->
+
+<section class="contact-section">
+
+    <div class="contact-header">
+
+        <h1>Hubungi Kami ☎️</h1>
+
+        <p>
+            Ada pertanyaan? Kirim pesan dan tim bakery kami akan membantu dengan senang hati.
+        </p>
+
+    </div>
+
+
+    <div class="contact-wrapper">
+
+        <!-- LEFT -->
+
+        <div class="contact-info">
+
+            <h2>Informasi Toko</h2>
+
+            <div class="info-item">
+                <span>📍</span>
+                <p>Jl. Pajajaran No. 12, Bogor</p>
+            </div>
+
+            <div class="info-item">
+                <span>📞</span>
+                <p>0812-3456-7890</p>
+            </div>
+
+            <div class="info-item">
+                <span>✉️</span>
+                <p>sweetcrumbs@gmail.com</p>
+            </div>
+
+            <div class="info-item">
+                <span>🕒</span>
+                <p>Senin - Sabtu | 06.00 - 18.00 WIB</p>
+            </div>
+
+
+            <div class="social-icons">
+
+                <a href="#">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fas fa-shopping-bag"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="contact-form-box">
+
+            <form id="contactForm">
+
+                <div class="input-box">
+
+                    <label>Nama Lengkap</label>
+
+                    <input type="text" placeholder="Masukkan nama kamu">
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label>Nomor WhatsApp</label>
+
+                    <input type="text" placeholder="08xxxxxxxxxx">
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label>Pesan</label>
+
+                    <textarea placeholder="Tulis pesan kamu di sini..."></textarea>
+
+                </div>
+
+
+                <button type="submit" class="send-btn">
+                    Kirim Pesan
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
